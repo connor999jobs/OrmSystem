@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Vadym",
+    "surname": "Kostenko",
+    "age": 24,
+    "dateOfBirth": "1998-07-27",
+    "gender": "male",
+    "company": "knubisoft",
+    "position": "java trainee",
+    "salary": 200
+  },
+  {
+    "name": "Valik",
+    "surname": "Tvardovski",
+    "age": 23,
+    "dateOfBirth": "1999-05-25",
+    "gender": "male",
+    "company": "DataArt",
+    "position": "Senior Java",
+    "salary": 5000
+  },
+  {
+    "name": "Anastasiya",
+    "surname": "Skvorchova",
+    "age": 23,
+    "dateOfBirth": "1998-09-28",
+    "gender": "female",
+    "company": "AAA",
+    "position": "Data Analyst",
+    "salary": 1000
+  },
+  {
+    "name": "Dima",
+    "surname": "Izotov",
+    "age": 22,
+    "dateOfBirth": "1999-10-25",
+    "gender": "male",
+    "company": "Global Logic",
+    "position": "Network Eng",
+    "salary": 1500
+  }
+]

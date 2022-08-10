@@ -1,0 +1,5 @@
+name,surname,age,dateOfBirth,gender,company,position,salary
+Vadym,Kostenko,24,1998-07-27,male,knubisoft,java trainee,200.0
+Valik,Tvardovski,23,1999-05-25,male,DataArt,Senior Java,5000.0
+Anastasiya,Skvorchova,23,1998-09-28,female,AAA,Data Analyst,1000.0
+Dima,Izotov,22,1999-10-25,male,Global Logic,Network Eng,1500.0

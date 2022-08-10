@@ -1,0 +1,13 @@
+<root>
+    <row>
+        <name>Vadym</name>
+        <surname>Kostenko</surname>
+        <age>24</age>
+        <dateOfBirth>1998-07-27</dateOfBirth>
+        <gender>male</gender>
+        <company>knubisoft</company>
+        <position>java trainee</position>
+        <salary>200.0</salary>
+    </row>
+
+</root>
