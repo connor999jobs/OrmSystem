@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
 import lombok.SneakyThrows;
 import org.orm.ormSystem.table.Table;
+import org.orm.ormSystem.transform.source.StringInputSource;
 import org.orm.ormSystem.type.parsing.ParsingStrategy;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
@@ -11,16 +12,15 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class XMLParsingStrategy implements ParsingStrategy {
+public class XMLParsingStrategy implements ParsingStrategy<StringInputSource> {
 
     @Override
     @SneakyThrows
-    public Table parseToTable(String content) {
+    public Table parseToTable(StringInputSource content) {
         XmlMapper parser =new XmlMapper();
         parser.registerModule(new JSR310Module());
-        JsonNode node = parser.readTree(content);
+        JsonNode node = parser.readTree(content.getContent());
         Map<Integer, Map<String, String>> result = buildTable(node);
-
 
         return new Table(result);
     }
@@ -29,20 +29,20 @@ public class XMLParsingStrategy implements ParsingStrategy {
         Map<Integer,Map<String,String>> xmlMap = new LinkedHashMap<>();
         int index = 0;
         for (JsonNode each : treeNode){
-            Map<String,String> item = bulidRow(each);
+            Map<String,String> item = buildRow(each);
             xmlMap.put(index,item);
             index++;
         }
         return xmlMap;
     }
 
-    private Map<String, String> bulidRow(JsonNode each) {
-        Map<String, String> item = new LinkedHashMap<>();
-        Iterator<Map.Entry<String,JsonNode>> iterator = each.fields();
-        while (iterator.hasNext()){
-            Map.Entry<String, JsonNode> next = iterator.next();
-            item.put(next.getKey(),next.getValue().textValue());
+    private Map<String, String> buildRow(JsonNode each) {
+        Map<String, String> xmlItem = new LinkedHashMap<>();
+        Iterator<Map.Entry<String,JsonNode>> xmlIterator = each.fields();
+        while (xmlIterator.hasNext()){
+            Map.Entry<String, JsonNode> next = xmlIterator.next();
+            xmlItem.put(next.getKey(),next.getValue().textValue());
         }
-        return item;
+        return xmlItem;
     }
 }

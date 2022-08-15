@@ -4,19 +4,20 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import org.orm.ormSystem.table.Table;
+import org.orm.ormSystem.transform.source.StringInputSource;
 import org.orm.ormSystem.type.parsing.ParsingStrategy;
 
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class JSONParsingStrategy implements ParsingStrategy {
+public class JSONParsingStrategy implements ParsingStrategy<StringInputSource> {
 
     @Override
     @SneakyThrows
-    public Table parseToTable(String content) {
+    public Table parseToTable(StringInputSource content) {
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode treeNode = mapper.readTree(content);
+        JsonNode treeNode = mapper.readTree(content.getContent());
         Map<Integer, Map<String, String>> result = buildTable(treeNode);
         return new Table(result);
     }

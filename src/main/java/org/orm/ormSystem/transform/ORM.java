@@ -1,18 +1,19 @@
-package org.orm.ormSystem;
+package org.orm.ormSystem.transform;
 
 import lombok.SneakyThrows;
-import org.apache.commons.io.FileUtils;
 import org.orm.ormSystem.table.Table;
+import org.orm.ormSystem.transform.source.DataInputSource;
+import org.orm.ormSystem.transform.source.DatabaseInputSource;
+import org.orm.ormSystem.transform.source.StringInputSource;
+import org.orm.ormSystem.type.parsing.database.DataBaseParsingStrategy;
 import org.orm.ormSystem.type.parsing.ParsingStrategy;
 import org.orm.ormSystem.type.parsing.csv.CSVParsingStrategy;
 import org.orm.ormSystem.type.parsing.json.JSONParsingStrategy;
 import org.orm.ormSystem.type.typeEnum.FileContentType;
 import org.orm.ormSystem.type.parsing.xml.XMLParsingStrategy;
 
-import java.io.File;
 import java.lang.reflect.Field;
 import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -28,13 +29,21 @@ public class ORM implements ORMList {
 
     @Override
     @SneakyThrows
-    public <T> List<T> transformFile(File file, Class<T> cls) {
-        String content = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
-        contentType = guessContentTypeByContent(content);
-        parsingStrategy = createStrategyByContentType(contentType);
-
-        Table table = parsingStrategy.parseToTable(content);
+    public <T> List<T> transformFile(DataInputSource inputSource, Class<T> cls) {
+        Table table = convertToTable(inputSource);
         return convertTableToListOfClasses(table, cls);
+    }
+
+    private Table convertToTable(DataInputSource dataInputSource) {
+        if (dataInputSource instanceof DatabaseInputSource){
+            return new DataBaseParsingStrategy().parseToTable((DatabaseInputSource) dataInputSource);
+        } else if (dataInputSource instanceof StringInputSource){
+            return getStringParsingStrategy((StringInputSource) dataInputSource)
+                    .parseToTable((StringInputSource) dataInputSource);
+        } else
+        {
+            throw new UnsupportedOperationException("Unknown type " + dataInputSource);
+        }
     }
 
     private <T> List<T> convertTableToListOfClasses(Table table, Class<T> cls) {
@@ -75,28 +84,17 @@ public class ORM implements ORMList {
         }).apply(value);
     }
 
-    private FileContentType guessContentTypeByContent(String content) {
-        char firstChar = content.charAt(0);
+    private ParsingStrategy<StringInputSource> getStringParsingStrategy(StringInputSource inputSource){
+        String content =inputSource.getContent();
+        char firstChar =content.charAt(0);
         switch (firstChar) {
             case '{':
             case '[':
-                return FileContentType.JSON;
-            case '<':
-                return FileContentType.XML;
-            default:
-                return FileContentType.CSV;
-        }
-    }
-    private ParsingStrategy createStrategyByContentType(FileContentType contentType) {
-        switch (contentType) {
-            case JSON:
                 return new JSONParsingStrategy();
-            case XML:
+            case '<':
                 return new XMLParsingStrategy();
-            case CSV:
-                return new CSVParsingStrategy();
             default:
-                throw new UnsupportedOperationException("Unknown strategy " + contentType);
+                return new CSVParsingStrategy();
         }
     }
 }
