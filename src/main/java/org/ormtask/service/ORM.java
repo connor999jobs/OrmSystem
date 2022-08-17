@@ -1,15 +1,15 @@
-package org.orm.ormSystem.transform;
+package org.ormtask.service;
 
 import lombok.SneakyThrows;
-import org.orm.ormSystem.table.Table;
-import org.orm.ormSystem.transform.source.DataReadWriteSource;
-import org.orm.ormSystem.transform.source.ConnectionReadWriteSource;
-import org.orm.ormSystem.transform.source.FileReadWriteSource;
-import org.orm.ormSystem.type.parsing.database.DataBaseParsingStrategy;
-import org.orm.ormSystem.type.parsing.ParsingStrategy;
-import org.orm.ormSystem.type.parsing.csv.CSVParsingStrategy;
-import org.orm.ormSystem.type.parsing.json.JSONParsingStrategy;
-import org.orm.ormSystem.type.parsing.xml.XMLParsingStrategy;
+import org.ormtask.table.Table;
+import org.ormtask.source.DataReadWriteSource;
+import org.ormtask.source.ConnectionReadWriteSource;
+import org.ormtask.source.FileReadWriteSource;
+import org.ormtask.fileType.parsing.database.DataBaseParsingStrategy;
+import org.ormtask.fileType.ParsingStrategy;
+import org.ormtask.fileType.parsing.csv.CSVParsingStrategy;
+import org.ormtask.fileType.parsing.json.JSONParsingStrategy;
+import org.ormtask.fileType.parsing.xml.XMLParsingStrategy;
 
 import java.lang.reflect.Field;
 import java.math.BigInteger;
@@ -32,6 +32,8 @@ public class ORM implements ORMList {
     @Override
     public <T> void writeAll(DataReadWriteSource<?> content, List<T> object) {
         Table writeTable = convertToTable(content);
+
+
 
     }
 

@@ -1,4 +1,4 @@
-package org.orm.modele;
+package org.ormtask.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

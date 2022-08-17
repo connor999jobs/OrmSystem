@@ -1,16 +1,8 @@
-package org.orm.ormSystem.connect;
+package org.ormtask.connection;
 
-import com.github.vldrus.sql.rowset.CachedRowSetWrapper;
 import lombok.SneakyThrows;
-import org.orm.modele.PersonOrm;
 
-import javax.sql.rowset.CachedRowSet;
-import javax.sql.rowset.RowSetFactory;
-import javax.sql.rowset.RowSetProvider;
 import java.sql.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ConnectionToDatabase {
     private static final String url = "jdbc:postgresql://localhost:5432/OrmSystem";

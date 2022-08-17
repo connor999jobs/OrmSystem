@@ -1,4 +1,4 @@
-package org.orm.ormSystem.table;
+package org.ormtask.table;
 
 import lombok.RequiredArgsConstructor;
 
