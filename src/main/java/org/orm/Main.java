@@ -1,37 +1,36 @@
 package org.orm;
 
+import lombok.SneakyThrows;
+import org.orm.modele.Person;
 import org.orm.modele.PersonOrm;
 import org.orm.ormSystem.connect.ConnectionToDatabase;
 import org.orm.ormSystem.transform.ORM;
 import org.orm.ormSystem.transform.ORMList;
-import org.orm.ormSystem.transform.source.DatabaseInputSource;
+import org.orm.ormSystem.transform.source.ConnectionReadWriteSource;
+import org.orm.ormSystem.transform.source.DataReadWriteSource;
+import org.orm.ormSystem.type.parsing.csv.CSVParsingStrategy;
 import org.orm.ormSystem.type.parsing.database.DataBaseParsingStrategy;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.sql.ResultSet;
+import java.net.URL;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public class Main {
 
-
-    public static void main(String[] args) throws URISyntaxException, IOException {
-//        URL url = Main.class.getClassLoader().getResource("reader.csv");
-//        String content = FileUtils.readFileToString(new File(url.toURI()), StandardCharsets.UTF_8);
-        ORMList interfaceList =new ORM();
-//        List<PersonOrm> result =interfaceList.transformFile(new StringInputSource(content), PersonOrm.class);
+    private static final ORMList ORM = new ORM();
+    private static final ConnectionToDatabase connect = new ConnectionToDatabase();
 
 
-        ConnectionToDatabase connection = new ConnectionToDatabase();
-        ResultSet set = connection.getPerson();
+    public static void main(String[] args) throws URISyntaxException, IOException, SQLException {
 
-        List<PersonOrm> list = interfaceList.transformFile(new DatabaseInputSource(set), PersonOrm.class);
-        System.out.println(list);
+        List<Person> result;
+        DataReadWriteSource<ResultSet> rw = new ConnectionReadWriteSource(connect.getConnection(), "person");
+        result = ORM.readAll(rw,Person.class);
 
-
-
-
-
-     }
+    }
 
 }

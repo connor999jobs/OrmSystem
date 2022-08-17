@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
 import lombok.SneakyThrows;
 import org.orm.ormSystem.table.Table;
-import org.orm.ormSystem.transform.source.StringInputSource;
+import org.orm.ormSystem.transform.source.FileReadWriteSource;
 import org.orm.ormSystem.type.parsing.ParsingStrategy;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
@@ -12,11 +12,11 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class XMLParsingStrategy implements ParsingStrategy<StringInputSource> {
+public class XMLParsingStrategy implements ParsingStrategy<FileReadWriteSource> {
 
     @Override
     @SneakyThrows
-    public Table parseToTable(StringInputSource content) {
+    public Table parseToTable(FileReadWriteSource content) {
         XmlMapper parser =new XmlMapper();
         parser.registerModule(new JSR310Module());
         JsonNode node = parser.readTree(content.getContent());

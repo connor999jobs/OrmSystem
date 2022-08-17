@@ -2,14 +2,13 @@ package org.orm.ormSystem.transform;
 
 import lombok.SneakyThrows;
 import org.orm.ormSystem.table.Table;
-import org.orm.ormSystem.transform.source.DataInputSource;
-import org.orm.ormSystem.transform.source.DatabaseInputSource;
-import org.orm.ormSystem.transform.source.StringInputSource;
+import org.orm.ormSystem.transform.source.DataReadWriteSource;
+import org.orm.ormSystem.transform.source.ConnectionReadWriteSource;
+import org.orm.ormSystem.transform.source.FileReadWriteSource;
 import org.orm.ormSystem.type.parsing.database.DataBaseParsingStrategy;
 import org.orm.ormSystem.type.parsing.ParsingStrategy;
 import org.orm.ormSystem.type.parsing.csv.CSVParsingStrategy;
 import org.orm.ormSystem.type.parsing.json.JSONParsingStrategy;
-import org.orm.ormSystem.type.typeEnum.FileContentType;
 import org.orm.ormSystem.type.parsing.xml.XMLParsingStrategy;
 
 import java.lang.reflect.Field;
@@ -23,26 +22,28 @@ import java.util.Map;
 import java.util.function.Function;
 
 public class ORM implements ORMList {
-
-    public FileContentType contentType;
-    public ParsingStrategy parsingStrategy;
-
     @Override
     @SneakyThrows
-    public <T> List<T> transformFile(DataInputSource inputSource, Class<T> cls) {
+    public <T> List<T> readAll(DataReadWriteSource<?> inputSource, Class<T> cls) {
         Table table = convertToTable(inputSource);
         return convertTableToListOfClasses(table, cls);
     }
 
-    private Table convertToTable(DataInputSource dataInputSource) {
-        if (dataInputSource instanceof DatabaseInputSource){
-            return new DataBaseParsingStrategy().parseToTable((DatabaseInputSource) dataInputSource);
-        } else if (dataInputSource instanceof StringInputSource){
-            return getStringParsingStrategy((StringInputSource) dataInputSource)
-                    .parseToTable((StringInputSource) dataInputSource);
+    @Override
+    public <T> void writeAll(DataReadWriteSource<?> content, List<T> object) {
+        Table writeTable = convertToTable(content);
+
+    }
+
+    private <T> Table convertToTable(DataReadWriteSource<T> dataReadWriteSource) {
+        if (dataReadWriteSource instanceof ConnectionReadWriteSource){
+            return new DataBaseParsingStrategy().parseToTable((ConnectionReadWriteSource) dataReadWriteSource);
+        } else if (dataReadWriteSource instanceof FileReadWriteSource){
+            return getStringParsingStrategy((FileReadWriteSource) dataReadWriteSource)
+                    .parseToTable((FileReadWriteSource) dataReadWriteSource);
         } else
         {
-            throw new UnsupportedOperationException("Unknown type " + dataInputSource);
+            throw new UnsupportedOperationException("Unknown type " + dataReadWriteSource);
         }
     }
 
@@ -84,8 +85,8 @@ public class ORM implements ORMList {
         }).apply(value);
     }
 
-    private ParsingStrategy<StringInputSource> getStringParsingStrategy(StringInputSource inputSource){
-        String content =inputSource.getContent();
+    private ParsingStrategy<FileReadWriteSource> getStringParsingStrategy(FileReadWriteSource inputSource){
+        String content = String.valueOf(inputSource.getContent());
         char firstChar =content.charAt(0);
         switch (firstChar) {
             case '{':
