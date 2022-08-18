@@ -1,8 +1,8 @@
-package org.ormtask.fileType.parsing.csv;
+package org.ormtask.parsing.type.csv;
 
 import org.ormtask.table.Table;
 import org.ormtask.source.FileReadWriteSource;
-import org.ormtask.fileType.ParsingStrategy;
+import org.ormtask.parsing.ParsingStrategy;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;

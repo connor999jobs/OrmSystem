@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root>
+    <row>
+        <name>Vadym</name>
+        <age>24</age>
+        <salary>200.0</salary>
+        <position>java trainee</position>
+        <dateOfBirth>1998-07-27</dateOfBirth>
+    </row>
+</root>

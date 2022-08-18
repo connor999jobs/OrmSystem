@@ -13,10 +13,10 @@ import java.time.LocalDate;
 public class PersonOrm {
     private String name;
     private String surname;
-    private Integer age;
-    private LocalDate dateOfBirth;
+    private String age;
+    private String dateOfBirth;
     private String gender;
     private String company;
     private String position;
-    private Float salary;
+    private String salary;
 }

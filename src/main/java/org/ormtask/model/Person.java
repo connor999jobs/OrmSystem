@@ -16,8 +16,8 @@ import java.time.LocalDate;
 public class Person {
 
     private String name;
-    private BigInteger age;
-    private BigInteger salary;
+    private String age;
+    private String salary;
     private String position;
     private LocalDate dateOfBirth;
 

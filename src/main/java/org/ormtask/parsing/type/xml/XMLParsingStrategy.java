@@ -1,11 +1,11 @@
-package org.ormtask.fileType.parsing.xml;
+package org.ormtask.parsing.type.xml;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
 import lombok.SneakyThrows;
 import org.ormtask.table.Table;
 import org.ormtask.source.FileReadWriteSource;
-import org.ormtask.fileType.ParsingStrategy;
+import org.ormtask.parsing.ParsingStrategy;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 import java.util.Iterator;

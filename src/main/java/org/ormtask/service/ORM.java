@@ -1,15 +1,20 @@
 package org.ormtask.service;
 
 import lombok.SneakyThrows;
+import org.apache.commons.io.FilenameUtils;
 import org.ormtask.table.Table;
 import org.ormtask.source.DataReadWriteSource;
 import org.ormtask.source.ConnectionReadWriteSource;
 import org.ormtask.source.FileReadWriteSource;
-import org.ormtask.fileType.parsing.database.DataBaseParsingStrategy;
-import org.ormtask.fileType.ParsingStrategy;
-import org.ormtask.fileType.parsing.csv.CSVParsingStrategy;
-import org.ormtask.fileType.parsing.json.JSONParsingStrategy;
-import org.ormtask.fileType.parsing.xml.XMLParsingStrategy;
+import org.ormtask.parsing.type.database.DataBaseParsingStrategy;
+import org.ormtask.parsing.ParsingStrategy;
+import org.ormtask.parsing.type.csv.CSVParsingStrategy;
+import org.ormtask.parsing.type.json.JSONParsingStrategy;
+import org.ormtask.parsing.type.xml.XMLParsingStrategy;
+import org.ormtask.write.WriteParsingStrategy;
+import org.ormtask.write.csv.CsvWriteParsingStrategy;
+import org.ormtask.write.json.JsonWriteParsingStrategy;
+import org.ormtask.write.xml.XmlWriteParsingStrategy;
 
 import java.lang.reflect.Field;
 import java.math.BigInteger;
@@ -29,13 +34,7 @@ public class ORM implements ORMList {
         return convertTableToListOfClasses(table, cls);
     }
 
-    @Override
-    public <T> void writeAll(DataReadWriteSource<?> content, List<T> object) {
-        Table writeTable = convertToTable(content);
 
-
-
-    }
 
     private <T> Table convertToTable(DataReadWriteSource<T> dataReadWriteSource) {
         if (dataReadWriteSource instanceof ConnectionReadWriteSource){
@@ -98,6 +97,34 @@ public class ORM implements ORMList {
                 return new XMLParsingStrategy();
             default:
                 return new CSVParsingStrategy();
+        }
+    }
+
+
+
+    @Override
+    public <T> void writeAll(DataReadWriteSource<?> content, List<T> object) {
+        if(content instanceof FileReadWriteSource){
+            WriteParsingStrategy strategy = getWriteParsingStrategy(content);
+            writeValueToFile(strategy,object);
+        }
+    }
+
+    private <T> void writeValueToFile(WriteParsingStrategy strategy, List<T> object) {
+        strategy.write(object);
+    }
+
+
+    private WriteParsingStrategy getWriteParsingStrategy(DataReadWriteSource<?> content) {
+        String contentType = FilenameUtils.getExtension(((FileReadWriteSource) content).getSource().getName());
+        if (contentType.equals("json")){
+            return new JsonWriteParsingStrategy();
+        }
+        else if (contentType.equals("xml")){
+            return new XmlWriteParsingStrategy();
+        }
+        else {
+            return new CsvWriteParsingStrategy();
         }
     }
 }

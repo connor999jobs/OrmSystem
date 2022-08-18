@@ -1,9 +1,9 @@
-package org.ormtask.fileType.parsing.database;
+package org.ormtask.parsing.type.database;
 
 import lombok.SneakyThrows;
 import org.ormtask.table.Table;
 import org.ormtask.source.ConnectionReadWriteSource;
-import org.ormtask.fileType.ParsingStrategy;
+import org.ormtask.parsing.ParsingStrategy;
 
 import java.sql.*;
 import java.util.LinkedHashMap;

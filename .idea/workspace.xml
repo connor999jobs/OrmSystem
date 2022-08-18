@@ -4,25 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef8401a9-f19f-4ba9-81d5-f6faa29d9159" name="Changes" comment="Read All type and Database connection.">
+    <list default="true" id="ef8401a9-f19f-4ba9-81d5-f6faa29d9159" name="Changes" comment="Read All type and Database connection.&#10;some fix">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/write/WriteParsingStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/write/csv/CsvWriteParsingStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/write/json/JsonWriteParsingStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/write/xml/XmlWriteParsingStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/reader2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/reader2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/modele/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/model/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/modele/PersonOrm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/model/PersonOrm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/ormSystem/connect/ConnectionToDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/connection/ConnectionToDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/ormSystem/table/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/table/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/ormSystem/transform/ORM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/service/ORM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/ormSystem/transform/ORMList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/service/ORMList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/ormSystem/transform/source/ConnectionReadWriteSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/source/ConnectionReadWriteSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/ormSystem/transform/source/DataReadWriteSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/source/DataReadWriteSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/ormSystem/transform/source/FileReadWriteSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/source/FileReadWriteSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/ormSystem/type/parsing/ParsingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/fileType/ParsingStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/ormSystem/type/parsing/WriteToDataSource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/ormSystem/type/parsing/csv/CSVParsingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/fileType/parsing/csv/CSVParsingStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/ormSystem/type/parsing/database/DataBaseParsingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/fileType/parsing/database/DataBaseParsingStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/ormSystem/type/parsing/json/JSONParsingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/fileType/parsing/json/JSONParsingStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/ormSystem/type/parsing/xml/XMLParsingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/fileType/parsing/xml/XMLParsingStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/orm/ormSystem/type/typeEnum/FileContentType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ormtask/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ormtask/fileType/ParsingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/parsing/ParsingStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ormtask/fileType/parsing/csv/CSVParsingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/parsing/type/csv/CSVParsingStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ormtask/fileType/parsing/database/DataBaseParsingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/parsing/type/database/DataBaseParsingStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ormtask/fileType/parsing/json/JSONParsingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/parsing/type/json/JSONParsingStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ormtask/fileType/parsing/xml/XMLParsingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/parsing/type/xml/XMLParsingStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ormtask/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/model/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ormtask/model/PersonOrm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/model/PersonOrm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ormtask/service/ORM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ormtask/service/ORM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/reader.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/reader.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/reader.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/reader.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,23 +52,23 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/konno/Desktop/Java Core/OrmSystem/OrmSystem/src/main/java/org/example",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/konno/Desktop/Java Core/OrmSystem/OrmSystem/src/main/java/org/example&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql",
-      "sqlite"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;,
+      &quot;sqlite&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\konno\Desktop\Java Core\OrmSystem\OrmSystem\src\main\java\org\example" />
@@ -146,7 +147,10 @@
       <workItem from="1660585275493" duration="3473000" />
       <workItem from="1660637086681" duration="7397000" />
       <workItem from="1660669094368" duration="3046000" />
-      <workItem from="1660720997656" duration="7420000" />
+      <workItem from="1660720997656" duration="8212000" />
+      <workItem from="1660761105349" duration="2752000" />
+      <workItem from="1660764198449" duration="86000" />
+      <workItem from="1660815514487" duration="6725000" />
     </task>
     <task id="LOCAL-00001" summary="Create Orm System">
       <created>1660135937916</created>
@@ -169,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660747809335</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Read All type and Database connection.&#10;some fix">
+      <created>1660755463831</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1660755463831</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,7 +202,8 @@
     <MESSAGE value="Create Orm System" />
     <MESSAGE value="Add Database connection" />
     <MESSAGE value="Read All type and Database connection." />
-    <option name="LAST_COMMIT_MESSAGE" value="Read All type and Database connection." />
+    <MESSAGE value="Read All type and Database connection.&#10;some fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Read All type and Database connection.&#10;some fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -203,8 +215,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/ormtask/Main.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="5" />
+          <line>34</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -213,5 +225,10 @@
         <PinnedItemInfo parentTag="org.orm.modele.Person" memberName="salary" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/src/main/java/org/ormtask/Main.java" line="34">
+        <watch expression="((FileReadWriteSource)readWriteSource).source" language="JAVA" custom="org.ormtask.source.FileReadWriteSource" />
+      </inline-watch>
+    </watches-manager>
   </component>
 </project>

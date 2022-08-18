@@ -1,4 +1,4 @@
-package org.ormtask.fileType;
+package org.ormtask.parsing;
 
 import org.ormtask.table.Table;
 import org.ormtask.source.DataReadWriteSource;
