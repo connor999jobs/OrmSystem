@@ -118,10 +118,10 @@ public class ORM implements ORMList {
     private WriteParsingStrategy getWriteParsingStrategy(DataReadWriteSource<?> content) {
         String contentType = FilenameUtils.getExtension(((FileReadWriteSource) content).getSource().getName());
         if (contentType.equals("json")){
-            return new JsonWriteParsingStrategy();
+            return new JsonWriteParsingStrategy((FileReadWriteSource) content);
         }
-        else if (contentType.equals("xml")){
-            return new XmlWriteParsingStrategy();
+        if (contentType.equals("xml")){
+            return new XmlWriteParsingStrategy((FileReadWriteSource) content);
         }
         else {
             return new CsvWriteParsingStrategy();

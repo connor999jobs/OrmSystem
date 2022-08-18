@@ -28,7 +28,7 @@ public class Main {
 //        DataReadWriteSource<ResultSet> rw = new ConnectionReadWriteSource(connect.getConnection(), "person");
 //        result = ORM.readAll(rw,Person.class);
 
-        URL url = Main.class.getClassLoader().getResource("reader.json");
+        URL url = Main.class.getClassLoader().getResource("reader.xml");
         assert url != null;
         DataReadWriteSource<?> readWriteSource = new FileReadWriteSource(new File(url.toURI()));
         List<Person> personList = ORM.readAll(readWriteSource, Person.class);

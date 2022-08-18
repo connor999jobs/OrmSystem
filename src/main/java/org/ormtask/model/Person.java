@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(name = "person")
 public class Person {
 
     private String name;

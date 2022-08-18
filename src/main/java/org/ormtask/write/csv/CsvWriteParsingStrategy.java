@@ -1,5 +1,6 @@
 package org.ormtask.write.csv;
 
+import org.ormtask.source.DataReadWriteSource;
 import org.ormtask.write.WriteParsingStrategy;
 
 import java.util.List;
